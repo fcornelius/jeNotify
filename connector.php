@@ -1,5 +1,7 @@
 <?php
 
+require_once '../lib/unirest-php/src/Unirest.php';
+
 class JExamConnection {
 
     private $je_uri     = "https://jexam.inf.tu-dresden.de/de.jexam.web.v4.5/spring/";
