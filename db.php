@@ -42,9 +42,21 @@ class ExamsDB {
     while ($row = $result->fetch_array()) {
       $exams[$row['id']] = $row['name'];
     }
-
     return $exams;
+
   }
+
+  public function storeExams($updates) {
+    if (!$this->connected) return;
+    $stm = $this->db->prepare("insert into ". EX_TABLE ." (id, name) values (?,?)");
+    $stm->bind_param("ss", $id, $name);
+
+    foreach ($updates as $id => $name) {
+      $stm->execute();
+    }
+  }
+
+
 
 }
 
