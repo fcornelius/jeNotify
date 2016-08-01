@@ -4,6 +4,12 @@ require_once 'db.php';
 
 class ExamsDB extends DB {
 
+  public function __construct() {
+    parent::__construct();
+    // $this->createTable();     // Uncomment on first use
+  }
+
+
   public function createTable() {
     if (!$this->connected) return;
     $sql = "create table ". EX_TABLE ." (
