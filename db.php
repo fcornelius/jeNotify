@@ -15,13 +15,14 @@ class ExamsDB {
     if ($this->db->connect_error) {
       die("Connection failed: " . $this->db->connect_error);
     }
+    $this->db->query("SET NAMES 'utf8'");
     echo "Connected!";
     $this->connected = true;
   }
 
-  public function createTable($table) {
+  public function createTable() {
     if (!$this->connected) return;
-    $sql = "create table ". $table ." (
+    $sql = "create table ". EX_TABLE ." (
       id varchar(20) not null,
       name varchar(50) not null
     )";
@@ -34,7 +35,15 @@ class ExamsDB {
   }
 
   public function loadExams() {
+    if (!$this->connected) return;
+    $sql = "select id, name from ". EX_TABLE;
+    $result = $this->db->query($sql);
+    $exams = array();
+    while ($row = $result->fetch_array()) {
+      $exams[$row['id']] = $row['name'];
+    }
 
+    return $exams;
   }
 
 }
