@@ -2,8 +2,8 @@
 
 class ExamsDB {
 
-  private $db;
-  private $connected;
+  private $db         = null;
+  private $connected  = false;
 
   public function __construct() {
     $this->setUpDB();

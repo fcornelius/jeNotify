@@ -16,32 +16,12 @@ $jc->login($login);
 $html = $jc->exams_html($pin);
 
 
-echo "<br><br>parsed:<br>";
 $p = new ExamsParser($html);
 $updates = $p->getUpdates($exams);
+$p->debugOutput($exams, $updates);
 
 $db->storeExams($updates);
-
-echo "<br><br>exams:<br>";
-foreach ($exams as $key => $value) {
-  echo "-". $key . "_". $value . "-<br>";
-}
-
-echo "<br>updates: <br>";
-foreach ($updates as $key => $value) {
-  echo "-". $key . "_". $value . "-<br>";
-}
-
-
-// echo $html;
 $jc->logout();
-
-
-
-
-
-
-
 
 
 ?>
