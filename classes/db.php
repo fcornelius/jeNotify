@@ -17,8 +17,12 @@ class DB {
       die("Connection failed: " . $this->db->connect_error);
     }
     $this->db->query("SET NAMES 'utf8'");
-    echo "Connected!";
+    // echo "Connected!";
     $this->connected = true;
+  }
+
+  public function escape($string) {
+    return $this->db->real_escape_string($string);
   }
 
 }

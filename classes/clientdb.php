@@ -34,6 +34,16 @@ class ClientDB extends DB {
     return $clients;
   }
 
+  public function addClient($email) {
+    if (!$this->connected) return;
+    $stm = $this->db->prepare("insert into ". CL_TABLE ." (email) values (?)");
+    $stm->bind_param("s", $email);
+    $stm->execute();
+  }
+
+  public function close() {
+    $this->db->close();
+  }
 
 }
 

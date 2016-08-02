@@ -24,7 +24,7 @@ class Postman {
     $msg .= "</ul><br><br>";
     $msg .= "<a href='https://jexam.inf.tu-dresden.de/de.jexam.web.v4.5/spring/exams/results'>";
     $msg .= "Hier gelangst du zu den Ergebnissen</a><br>";
-    $msg .= "<hr>". date('d.m.Y H:i:s');
+    $msg .= "<hr>". date('d.m.Y H:i:s', strtotime('+2 hours')) ."  <a href='https://github.com/phoelix/jeNotify/issues'>Problem melden</a>";
 
     echo "<br><br>";
     foreach ($clients as $email) {
